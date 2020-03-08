@@ -18,6 +18,30 @@ namespace TestConsole
             this.Y = Y;
         }
 
+        public override string ToString() { return $"({X}:{Y})"; }
+
+        public override bool Equals(object obj)
+        {
+            //проверка является ли obj объектом(или типом?) Vector2D
+            if (obj is Vector2D)
+            {
+                //здесь описано по каким именно параметрам происодит сравнение
+                return ((Vector2D)obj).X == X && ((Vector2D)obj).Y == Y;
+            }
+
+            return /*base.Equals(obj)*/ false;
+        }
+
+        public override int GetHashCode()
+        {
+            var hash = X.GetHashCode();
+            unchecked
+            {
+                hash = (hash * 372) ^ Y.GetHashCode();
+            }
+            return hash;
+        }
+
         public static Vector2D operator +(Vector2D a, Vector2D b)
         {
             return new Vector2D(a.X + b.X, a.Y + b.Y);
