@@ -21,10 +21,11 @@ namespace AsteroidGame
             form.Width = 800;
             form.Height = 600;
             //form.Text = "Астероиды";
-
+                        
             form.Show();
 
             Game.Initialize(form);
+            Game.Load();
             Game.Draw();
 
             Application.Run(form);
